@@ -141,13 +141,12 @@
   <ItemGroup>
     <ClInclude Include="TArrayTable.h" />
     <ClInclude Include="TScanTable.h" />
+    <ClInclude Include="TSortTable.h" />
     <ClInclude Include="TTable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FastTest.cpp" />
-    <ClCompile Include="TArrayTable.cpp" />
-    <ClCompile Include="TScanTable.cpp" />
-    <ClCompile Include="TTable.cpp" />
+    <ClCompile Include="TSortTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,8 +30,9 @@ inline bool TScanTable::Find(TKey key)
 inline bool TScanTable::Insert(TRecord record)
 {
 	if (IsFull() || Find(record.key)) return false;
-	arr[dataCount+1] = record;
+	this->arr[this->dataCount] = record;
 	efficiency++;
+	this->dataCount++;
 	return true;
 }
 

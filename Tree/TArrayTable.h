@@ -25,7 +25,9 @@ public:
 	void Reset() override { currentPos = 0; }
 	bool IsEnd() override { return currentPos == dataCount; }
 
-	TRecord GetCurrentRecord() override { return arr[currentPos]; }
+	TRecord GetCurrentRecord() override {
+		return arr[currentPos]; 
+	}
 	void SetCurrentRecord(TRecord record) override { arr[currentPos] = record; }
 	virtual int GetSize() { return size; }
 	virtual int GetCurrentPos() { return currentPos; }
@@ -42,7 +44,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, TArrayTable& tab)
 	{
-		os << "Вывод:" << std::endl;
+		os << "Output:" << std::endl;
 		std::cout << "Key" << " " << "Value" << std::endl;
 		for (tab.Reset(); !tab.IsEnd(); tab.GoNext())
 		{
@@ -59,6 +61,7 @@ public:
 				std::cout << tab.GetCurrentRecord().key << " " << std::left << tab.GetCurrentRecord().key << std::endl;
 			}
 		}
+		return os;
 	}
 };
 

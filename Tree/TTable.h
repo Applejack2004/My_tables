@@ -28,6 +28,11 @@ struct TRecord
 		value = other.value;
 		return *this;
 	}
+
+	void output()
+	{
+		std::cout << "( " << key << "  " << value << " )" << std::endl;
+	}
 };
 
 class TTable

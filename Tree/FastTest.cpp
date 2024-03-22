@@ -1,27 +1,25 @@
 #include<iostream>
 #include<string>
 #include<iomanip>
+#include "TSortTable.h"
+
 
 int main()
 {
-	/*
-	std::string s[3] = {"aaaaaaaaa","bbb","cccccc"};
-	int n[3] = { 111,2,3 };
-
-	std::cout << "Key" << " " << "Value" << std::endl;
-	for (int i = 0; i < 3; i++)
+	
+	TSortTable st(3);
+	TScanTable sct(5);
+	for (int i = 1; i <= sct.GetSize(); i++)
 	{
-		if (n[i] <= 9)
-		{
-			std::cout << n[i] << "   " << std::left << s[i] << std::endl;
-		}
-		else if (n[i] >= 10 && n[i] <= 99)
-		{
-			std::cout << n[i] << "  " << std::left << s[i] << std::endl;
-		}
-		else
-		{
-			std::cout << n[i] << " " << std::left << s[i] << std::endl;
-		}
-	}*/
+		TRecord r(i, "aaaaa");
+		sct.Insert(r);
+	}
+	
+
+	st.ToSort(sct,Quick);
+	for (st.Reset();!st.IsEnd();st.GoNext())
+	{
+		st.GetCurrentRecord().output();
+	}
+	//std::cout << st;
 }
