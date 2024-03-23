@@ -130,6 +130,8 @@
   <ItemGroup>
     <ClCompile Include="gtest-all.cc" />
     <ClCompile Include="test_main.cpp" />
+    <ClCompile Include="TScanTable_test.cpp" />
+    <ClCompile Include="TSortTable_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gtest.h" />

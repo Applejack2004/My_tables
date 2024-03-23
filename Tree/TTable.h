@@ -33,6 +33,17 @@ struct TRecord
 	{
 		std::cout << "( " << key << "  " << value << " )" << std::endl;
 	}
+	bool operator == (const TRecord& other)
+	{
+		if (this->value == other.value)
+			return true;
+		else
+			return false;
+	}
+	bool operator != (const TRecord& other)
+	{
+		return !(*this == other);
+	}
 };
 
 class TTable

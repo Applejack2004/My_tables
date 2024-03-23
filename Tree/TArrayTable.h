@@ -13,6 +13,10 @@ protected:
 public:
 	TArrayTable(int _size = MAX_SIZE)
 	{
+		if (_size > MAX_SIZE)
+		{
+			throw std::exception();
+		}
 		this->size = _size;
 		arr = new TRecord[size];
 		currentPos = 0;
