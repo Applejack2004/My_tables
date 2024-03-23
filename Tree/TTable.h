@@ -62,5 +62,6 @@ public:
 	virtual TRecord GetCurrentRecord() = 0;                //Возвращает текущую запись с ключём
 	virtual void SetCurrentRecord(TRecord record) = 0;     //Устанавливает текущую запись с ключём????
 	
+	
 };
 

@@ -12,12 +12,30 @@ private:
 	void Merge( int left,int mid, int right); //Функция объединения 2 частей массива
 
 public: 
-	TSortTable(int _size) :TScanTable(_size) {};
-	void ToSort(TScanTable& table, SortType sortType); //Преобразование типа
+	TSortTable(int _size=MAX_SIZE) :TScanTable(_size) {};
+	void ScanToSort(TScanTable& table, SortType sortType); //Преобразование типа
 
 	bool Find(TKey key);
 	bool Insert(TRecord record);
 	bool Delete(TKey key);
+
+	TSortTable operator=(const TSortTable& other)
+	{
+		if (this->size != other.size)
+		{
+			delete[] this->arr;
+			this->size = other.size;
+			this->arr = new TRecord[this->size];
+		}
+		this->dataCount = other.dataCount;
+		this->efficiency = other.efficiency;
+		for (int i = 0; i < this->size; i++)
+		{
+			this->arr[i] = other.arr[i];
+		}
+		this->currentPos = other.currentPos;
+		return *this;
+	}
 };
 
 //Реализация
@@ -129,15 +147,16 @@ inline void TSortTable::Merge(int left, int mid, int right)
 	delete[] mas2;
 }
 
-inline void TSortTable::ToSort(TScanTable& table, SortType sortType)
+inline void TSortTable::ScanToSort(TScanTable& table, SortType sortType)
 {
 	for (this->Reset(), table.Reset(); !table.IsEnd(); table.GoNext(), this->GoNext())
 	{
-		SetCurrentRecord(table.GetCurrentRecord());
+		this->SetCurrentRecord(table.GetCurrentRecord());
+		this->dataCount++;
 	}
-	if (sortType == SortType::Quick) QuickSort(0, this->dataCount - 1);
-	if (sortType == SortType::Merge) MergeSort(0, this->dataCount - 1);
-	if (sortType == SortType::Bubble) BubbleSort();
+	if (sortType == SortType::Quick) this->QuickSort(0, this->dataCount - 1);
+	if (sortType == SortType::Merge) this->MergeSort(0, this->dataCount - 1);
+	if (sortType == SortType::Bubble) this->BubbleSort();
 }
 
 inline bool TSortTable::Find(TKey key)

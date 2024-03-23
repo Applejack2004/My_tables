@@ -17,6 +17,18 @@ public:
 		arr = new TRecord[size];
 		currentPos = 0;
 	};
+	TArrayTable(const TArrayTable& other) 
+	{ 
+		dataCount = other.dataCount;
+		efficiency = other.efficiency; 
+		size = other.size;
+		arr = new TRecord[size];
+		for (int i = 0; i < size; i++)
+		{
+			arr[i] = other.arr[i];
+		}
+		currentPos = other.currentPos;
+	}
 	~TArrayTable() { delete[] arr; }
 
 	bool IsFull() const override { return dataCount == size; }
@@ -42,6 +54,7 @@ public:
 		}
 	}
 
+	
 	friend std::ostream& operator<<(std::ostream& os, TArrayTable& tab)
 	{
 		os << "Output:" << std::endl;

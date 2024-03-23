@@ -4,11 +4,26 @@
 class TScanTable:public TArrayTable
 {
 public:
-	TScanTable(int _size = 10) : TArrayTable(_size) {};
+	TScanTable(int _size = MAX_SIZE) : TArrayTable(_size) {};
 
 	bool Find(TKey key) override;
 	bool Insert(TRecord record) override;
 	bool Delete(TKey key) override;
+
+	TScanTable operator=(const TScanTable& other)
+	{
+		this->dataCount = other.dataCount;
+		this->efficiency = other.efficiency;
+		delete[] this->arr;
+		this->size = other.size;
+		this->arr = new TRecord[this->size];
+		for (int i = 0; i < this->size; i++)
+		{
+			this->arr[i] = other.arr[i];
+		}
+		this->currentPos = other.currentPos;
+		return *this;
+	}
 };
 
 //Реализация
