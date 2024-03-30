@@ -4,7 +4,7 @@
 
 typedef int TKey;
 typedef std::string TValue;
-
+constexpr auto MAX_SIZE = 999;
 struct TRecord
 {
 	TKey key;     //Ключ

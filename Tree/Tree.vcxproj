@@ -139,13 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="TArrayHash.h" />
     <ClInclude Include="TArrayTable.h" />
+    <ClInclude Include="THashTable.h" />
     <ClInclude Include="TScanTable.h" />
     <ClInclude Include="TSortTable.h" />
     <ClInclude Include="TTable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FastTest.cpp" />
+    <ClCompile Include="TArrayHash.cpp" />
+    <ClCompile Include="THashTable.cpp" />
     <ClCompile Include="TSortTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

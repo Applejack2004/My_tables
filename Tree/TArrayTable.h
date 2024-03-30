@@ -2,7 +2,7 @@
 #include<exception>
 #include"TTable.h"
 
-constexpr auto MAX_SIZE = 999;
+
 
 class TArrayTable:public TTable
 {
