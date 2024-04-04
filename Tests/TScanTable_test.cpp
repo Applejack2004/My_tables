@@ -1,19 +1,23 @@
 
-#include  "/my_git/Tree/Tree/Tree/TScanTable.h"
+//#include  "/my_git/Tree/Tree/Tree/TScanTable.h"
+#include "../Tree/TScanTable.h" //мой путь
 #include "gtest.h"
 #include "string"
+
 TEST(TScanTable, can_create_TScanTable)
 {
     ASSERT_NO_THROW(TScanTable table(10));
     
 
 }
+
 TEST(TScanTable, cant_create_TScanTable_with_size_more_then_max_size)
 {
     ASSERT_ANY_THROW(TScanTable table(100000000));
 
 
 }
+
 TEST(TScanTable, new_TScanTable_is_empty)
 {
     TScanTable table(10);
@@ -21,6 +25,7 @@ TEST(TScanTable, new_TScanTable_is_empty)
    EXPECT_TRUE(a == 0);
 
 }
+
 TEST(TScanTable, can_insert_new_Record_in_empty_TScanTable)
 {
     TScanTable table(10);
@@ -31,6 +36,7 @@ TEST(TScanTable, can_insert_new_Record_in_empty_TScanTable)
     EXPECT_TRUE(a == table.GetCurrentRecord());
 
 }
+
 TEST(TScanTable, can_insert_new_Record_in_last_empty_pos_in_TScanTable)
 {
     TScanTable table(10);
@@ -49,6 +55,7 @@ TEST(TScanTable, can_insert_new_Record_in_last_empty_pos_in_TScanTable)
     EXPECT_TRUE(a == table.GetCurrentRecord());
 
 }
+
 TEST(TScanTable, can_insert_new_Record_in_mid_pos_in_TScanTable)
 {
     TScanTable table(10);
@@ -67,6 +74,7 @@ TEST(TScanTable, can_insert_new_Record_in_mid_pos_in_TScanTable)
     EXPECT_TRUE(a == table.GetCurrentRecord());
 
 }
+
 TEST(TScanTable, cant_insert_new_Record_in_Full_TScanTable)
 {
     TScanTable table(10);
@@ -88,6 +96,7 @@ TEST(TScanTable, cant_insert_new_Record_in_Full_TScanTable)
 
 
 }
+
 TEST(TScanTable, can_delete_first_Record_in_TScanTable)
 {
     TScanTable table(10);
@@ -104,6 +113,7 @@ TEST(TScanTable, can_delete_first_Record_in_TScanTable)
 
 
 }
+
 TEST(TScanTable, cant_delete_Record_in_empty_TScanTable)
 {
     TScanTable table(10);
@@ -115,6 +125,7 @@ TEST(TScanTable, cant_delete_Record_in_empty_TScanTable)
 
 
 }
+
 TEST(TScanTable, can_delete_last_Record_in_Full_TScanTable)
 {
     TScanTable table(10);
@@ -139,6 +150,7 @@ TEST(TScanTable, can_delete_last_Record_in_Full_TScanTable)
 
 
 }
+
 TEST(TScanTable, can_delete_Record_in_mid_pos_in_TScanTable)
 {
     TScanTable table(10);
@@ -164,6 +176,7 @@ TEST(TScanTable, can_delete_Record_in_mid_pos_in_TScanTable)
    
 
 }
+
 TEST(TScanTable, can_get_size_in_TScanTable)
 {
     TScanTable table(10);
@@ -172,6 +185,7 @@ TEST(TScanTable, can_get_size_in_TScanTable)
    EXPECT_TRUE(size == 10);
 
 }
+
 TEST(TScanTable, can_get_and_set_current_in_TScanTable)
 {
     TScanTable table(10);
@@ -190,6 +204,7 @@ TEST(TScanTable, can_get_and_set_current_in_TScanTable)
 
 
 }
+
 TEST(TScanTable, cant_insert_the_record_with_the_same_key_in_TScanTable)
 {
     std::string str1 = "test1";

@@ -2,11 +2,12 @@
 #include<string>
 #include<iomanip>
 #include "TSortTable.h"
+#include "TArrayHash.h"
 
 
 int main()
 {
-	
+	TArrayHash hash_tab(10, 3);
 	TSortTable st(3);
 	TScanTable sct(5);
 	TSortTable st1(4);

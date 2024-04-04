@@ -33,7 +33,7 @@ struct TRecord
 	{
 		std::cout << "( " << key << "  " << value << " )" << std::endl;
 	}
-	bool operator == (const TRecord& other)
+	bool operator == (TRecord other)
 	{
 		if (this->value == other.value)
 			return true;

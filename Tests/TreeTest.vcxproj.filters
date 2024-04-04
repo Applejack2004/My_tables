@@ -24,6 +24,9 @@
     <ClCompile Include="TScanTable_test.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="TArrayHash_test.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="TSortTable_test.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>

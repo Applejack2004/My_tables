@@ -1,18 +1,22 @@
-#include  "/my_git/Tree/Tree/Tree/TSortTable.h"
+//#include  "/my_git/Tree/Tree/Tree/TSortTable.h"
+#include "../Tree/TSortTable.h" //мой путь
 #include "gtest.h"
 #include "string"
+
 TEST(TSortTable, can_create_TSortTable)
 {
     ASSERT_NO_THROW(TSortTable table(10));
 
 
 }
+
 TEST(TSortTable, cant_create_TSortTable_with_size_more_then_max_size)
 {
     ASSERT_ANY_THROW(TSortTable table(100000000));
 
 
 }
+
 TEST(TSortTable, new_TSortTable_is_empty)
 {
     TSortTable table(10);
@@ -42,6 +46,7 @@ TEST(TSortTable, TSortTable_is_sorted)
 
 
 }
+
 TEST(TSortTable, can_insert_new_Record_in_empty_TSortTable)
 {
     TSortTable table(10);
@@ -52,6 +57,7 @@ TEST(TSortTable, can_insert_new_Record_in_empty_TSortTable)
     EXPECT_TRUE(a == table.GetCurrentRecord());
 
 }
+
 TEST(TSortTable, can_insert_new_Record_in_first_pos_in_not_empty_TSortTable)
 {
     TSortTable table(10);
@@ -129,6 +135,7 @@ TEST(TSortTable, cant_insert_new_Record_in_Full_TSortTable)
 
 
 }
+
 TEST(TSortTable, can_delete_first_Record_in_TSortTable)
 {
     TSortTable table(10);
@@ -145,6 +152,7 @@ TEST(TSortTable, can_delete_first_Record_in_TSortTable)
 
 
 }
+
 TEST(TSortTable, cant_delete_Record_in_empty_TSortTable)
 {
     TSortTable table(10);
@@ -216,6 +224,7 @@ TEST(TSortTable, can_get_size_in_TSortTable)
     EXPECT_TRUE(size == 10);
 
 }
+
 TEST(TSortTable, can_get_and_set_current_in_TSortTable)
 {
     TSortTable table(10);
@@ -235,6 +244,7 @@ TEST(TSortTable, can_get_and_set_current_in_TSortTable)
 
 
 }
+
 TEST(TSortTable, cant_insert_the_record_with_the_same_key_in_TSortTable)
 {
     std::string str1 = "test1";

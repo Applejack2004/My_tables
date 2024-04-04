@@ -7,8 +7,13 @@ protected:
 	TRecord Empty, Del;
 	int Curr_pos, step,Free_pos,size;
 public:
-	TArrayHash(int _size=MAX_SIZE, int _step)
+
+	TArrayHash(int _size=MAX_SIZE, int _step = 3)
 	{
+		if (_size > MAX_SIZE)
+		{
+			throw std::exception();
+		}
 		size = _size;
 		step = _step;
 		pRecs = new TRecord[size];
@@ -20,6 +25,11 @@ public:
 			pRecs[i] = Empty;
 		}
 	}
+	~TArrayHash()
+	{
+		delete[] pRecs;
+	}
+
 	void Reset()
 	{
 		int Curr_pos = 0;
@@ -49,6 +59,7 @@ public:
 		}
 
 	}
+
 	bool Find(TKey key)
 	{
 		Free_pos = -1;
@@ -74,7 +85,7 @@ public:
 		return false;
 
 	}
-	bool IsFull()
+	bool IsFull() const 
 	{
 		if (dataCount == size)
 			return true;
@@ -82,12 +93,13 @@ public:
 		{
 			return false;
 		}
-	}
+	} ;
+
 	bool Insert( TRecord rec)
 	{
-		if (IsFull()) { return; }
+		if (IsFull()) { throw std::exception(); }
 		bool isfind = Find(rec.key);
-		if (isfind) { return; }
+		if (isfind) { return false; }
 		else
 		{
 			if (Free_pos != -1)
@@ -101,29 +113,39 @@ public:
 	}
 	bool Delete(TKey key)
 	{
-		
+		if (this->IsEmpty())
+		{
+			throw std::exception();
+		}
+
 		bool isfind = Find(key);
-		if (!isfind) { return; }
+		if (!isfind) { return false; }
 		else
 		{
-
 			pRecs[Curr_pos] = Del;
 			dataCount--;
-
 		}
 	}
-	~TArrayHash()
+
+	virtual int GetCurrentPos() { return Curr_pos; }
+	virtual void SetCurrentPos(int _curPos)
 	{
-		delete[] pRecs;
+		if (_curPos < size)
+		{
+			Curr_pos = _curPos;
+		}
+		else {
+			throw std::exception();
+		}
 	}
-	TRecord GetCurrentRecord() override {
+	TRecord GetCurrentRecord()  {
 		if (Curr_pos<0 && Curr_pos>size)
 		{
 			throw std::exception();
 		}
 		return pRecs[Curr_pos];
 	}
-	void SetCurrentRecord(TRecord record) override 
+	void SetCurrentRecord(TRecord record)  
 	{
 		if (Curr_pos<0 && Curr_pos>size)
 		{
@@ -131,5 +153,6 @@ public:
 		}
 		pRecs[Curr_pos] = record; 
 	}
+	int GetSize() { return size; }
 };
 
