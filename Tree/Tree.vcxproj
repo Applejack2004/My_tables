@@ -142,6 +142,7 @@
     <ClInclude Include="TArrayHash.h" />
     <ClInclude Include="TArrayTable.h" />
     <ClInclude Include="THashTable.h" />
+    <ClInclude Include="TListHash.h" />
     <ClInclude Include="TScanTable.h" />
     <ClInclude Include="TSortTable.h" />
     <ClInclude Include="TTable.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="FastTest.cpp" />
     <ClCompile Include="TArrayHash.cpp" />
     <ClCompile Include="THashTable.cpp" />
+    <ClCompile Include="TListHash.cpp" />
     <ClCompile Include="TSortTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
