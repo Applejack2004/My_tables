@@ -108,8 +108,8 @@ public:
 			}
 			pRecs[Curr_pos] = rec;
 			dataCount++;
-
 		}
+		return true;
 	}
 	bool Delete(TKey key)
 	{
@@ -125,6 +125,7 @@ public:
 			pRecs[Curr_pos] = Del;
 			dataCount--;
 		}
+		return true;
 	}
 
 	virtual int GetCurrentPos() { return Curr_pos; }

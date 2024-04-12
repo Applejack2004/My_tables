@@ -8,8 +8,13 @@ protected:
 	int size, CurrList;
 	std::list<TRecord>::iterator pCurr;
 public:
+
 	TListHash(int _size=MAX_SIZE)
 	{
+		if (_size > MAX_SIZE)
+		{
+			throw std::exception();
+		}
 		size = _size;
 		pList = new std::list<TRecord>[size];
 	}
@@ -17,6 +22,7 @@ public:
 	{
 		delete[] pList;
 	}
+
 	bool Find(TKey _key)
 	{
 		CurrList = HashFunc(_key)%size;
@@ -29,33 +35,35 @@ public:
 			}
 		}
 		return false;
-
-
 	}
 	bool Insert(TRecord record)
 	{
-		if(Find(record.key))
-		{
-			throw std::exception();
-		}
+		bool isfind = Find(record.key);
+		if (isfind) { return false; }
 		else 
 		{
 			pList[CurrList].push_front(record);
 			dataCount++;
 		}
+		return true;
 	}
 	bool Delete(TKey _key)
 	{
-		if (!Find(_key))
+		if (this->IsEmpty())
 		{
 			throw std::exception();
 		}
+
+		bool isfind = Find(_key);
+		if (!isfind) { return false; }
 		else
 		{
 			pList[CurrList].erase(pCurr);
 			dataCount--;
 		}
+		return true;
 	}
+
 	void Reset()
 	{
 		CurrList = 0;
@@ -92,6 +100,41 @@ public:
 	bool IsEnd()
 	{
 		return CurrList == size-1;
+	}
+
+	int GetSize() { return size; }
+	bool IsFull() const
+	{
+		if (dataCount == size)
+			return true;
+		else
+		{
+			return false;
+		}
+	};
+	virtual int GetCurrentPos() { return CurrList; }
+	virtual void SetCurrentPos(int _curPos)
+	{
+		if (_curPos < size)
+		{
+			CurrList = _curPos;
+		}
+		else {
+			throw std::exception();
+		}
+	}
+	TRecord GetCurrentRecord() 
+	{
+		return *pCurr;
+	}
+	void SetCurrentRecord(TRecord record)
+	{
+		if (CurrList<0 && CurrList>size)
+		{
+			throw std::exception();
+		}
+		pList[CurrList].push_front(record);
+	
 	}
 };
 

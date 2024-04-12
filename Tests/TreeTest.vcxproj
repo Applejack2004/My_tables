@@ -131,6 +131,7 @@
     <ClCompile Include="gtest-all.cc" />
     <ClCompile Include="TArrayHash_test.cpp" />
     <ClCompile Include="test_main.cpp" />
+    <ClCompile Include="TListHash_test.cpp" />
     <ClCompile Include="TScanTable_test.cpp" />
     <ClCompile Include="TSortTable_test.cpp" />
   </ItemGroup>
