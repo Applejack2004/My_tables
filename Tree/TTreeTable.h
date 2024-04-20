@@ -16,6 +16,7 @@ class TTreeTable:public TTable
 protected:
 	TTreeNode* pRoot, * pCurr, * pPrev;
 	std::stack<TTreeNode*> st;
+	int countpos, lvl;
 public:
 	TTreeTable()
 	{
@@ -145,6 +146,68 @@ public:
 		dataCount--;
 		return true;
 	}
+	void Reset()
+	{
+		while (!st.empty()) st.pop();
+		pCurr = pRoot;
+		while (pCurr != nullptr)
+		{
+			st.push(pCurr);
+			pCurr = pCurr->pLeft;
+		}
+		pCurr = st.top();
+		countpos = 0;
+	}
+	void GoNext()
+	{
+		st.pop();
+		if (pCurr->pRight != nullptr)
+		{
+			pCurr = pCurr->pRight;
+			while (pCurr != nullptr)
+			{
+				st.push(pCurr);
+				pCurr = pCurr->pLeft;
+			}
+			pCurr = st.top();
+		}
+		else if (!st.empty())pCurr = st.top();
+		countpos++;
+	}
+	bool IsEnd()
+	{
+		return countpos == dataCount;
+	}
+	void DeleteTreeTab(TTreeNode* pNode)
+	{
+		if (pNode != nullptr)
+		{
+			DeleteTreeTab(pNode->pLeft);
+			DeleteTreeTab(pNode->pRight);
+			delete pNode;
+		}
+	}
+	~TTreeTable() 
+	{
+		DeleteTreeTab(pRoot);
+	}
+	void PrintTable(std::ostream &os,TTreeNode * pNode)
+	{
+		if (pNode != nullptr)
+		{
+			for (int i = 0; i < lvl; i++)
+			{
+				os << " ";
+			}
+			os << pNode->rec.key<<std::endl;
+			lvl++;
+			PrintTable(os, pNode->pRight);
+			PrintTable(os, pNode->pLeft);
+			lvl--;
+
+		}
+	}
+	
 
 
 };
