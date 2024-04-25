@@ -134,6 +134,7 @@
     <ClCompile Include="TListHash_test.cpp" />
     <ClCompile Include="TScanTable_test.cpp" />
     <ClCompile Include="TSortTable_test.cpp" />
+    <ClCompile Include="TTreeTable_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gtest.h" />

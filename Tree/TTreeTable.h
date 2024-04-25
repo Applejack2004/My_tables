@@ -1,6 +1,8 @@
 #pragma once
 #include "TTable.h"
 #include <stack>
+
+
 struct TTreeNode {
 	TRecord rec;
 	TTreeNode* pLeft, * pRight;
@@ -11,22 +13,36 @@ struct TTreeNode {
 		pRight = nullptr;
 	}
 };
+
+
 class TTreeTable:public TTable
 {
 protected:
+
 	TTreeNode* pRoot, * pCurr, * pPrev;
 	std::stack<TTreeNode*> st;
-	int countpos, lvl;
+	int countpos{}, lvl{};
+	
+
 public:
+
 	TTreeTable()
 	{
 		pRoot = nullptr;
 		pCurr = nullptr;
 		pPrev = nullptr;
+		countpos = 0; lvl = 0;
 	}
 
 	bool Find(TKey key)
 	{
+		if (pCurr != nullptr)
+		{
+			if (pCurr->rec.key == key)
+			{
+				return true;
+			}
+		}
 		pCurr = pRoot; pPrev = nullptr;
 		while (pCurr != nullptr)
 		{
@@ -81,8 +97,6 @@ public:
 			dataCount++;
 			return true;
 		}
-		
-		
 	}
 	bool Delete(TKey key)
 	{
@@ -146,9 +160,13 @@ public:
 		dataCount--;
 		return true;
 	}
+
 	void Reset()
 	{
-		while (!st.empty()) st.pop();
+		while (!st.empty())
+		{
+			st.pop();
+		}
 		pCurr = pRoot;
 		while (pCurr != nullptr)
 		{
@@ -160,7 +178,14 @@ public:
 	}
 	void GoNext()
 	{
-		st.pop();
+		if (pCurr==nullptr || IsEnd())
+		{
+			throw std::exception();
+		}
+		if (!st.empty())
+		{
+			st.pop();
+		}
 		if (pCurr->pRight != nullptr)
 		{
 			pCurr = pCurr->pRight;
@@ -171,13 +196,17 @@ public:
 			}
 			pCurr = st.top();
 		}
-		else if (!st.empty())pCurr = st.top();
+		else if (!st.empty())
+		{
+			pCurr = st.top();
+		}
 		countpos++;
 	}
 	bool IsEnd()
 	{
 		return countpos == dataCount;
 	}
+
 	void DeleteTreeTab(TTreeNode* pNode)
 	{
 		if (pNode != nullptr)
@@ -191,7 +220,8 @@ public:
 	{
 		DeleteTreeTab(pRoot);
 	}
-	void PrintTable(std::ostream &os,TTreeNode * pNode)
+
+	void PrintTable(std::ostream& os, TTreeNode* pNode)
 	{
 		if (pNode != nullptr)
 		{
@@ -207,8 +237,43 @@ public:
 
 		}
 	}
-	
+
+	bool IsFull() const { return false; } ;
+    TRecord GetCurrentRecord() {return pCurr->rec;};
+	void SetCurrentRecord(TRecord record) 
+	{ 
+		pCurr->rec.key = record.key; 
+		pCurr->rec.value = record.value;
+	};
 
 
+	TKey GetRightKey(TKey key)
+	{
+		Find(key);
+		if (pCurr->pRight == nullptr)
+		{
+			return -1;
+		}
+		else
+		{
+			return pCurr->pRight->rec.key;
+		}
+	}
+	TKey GetLeftKey(TKey key)
+	{
+		Find(key);
+		if (pCurr->pLeft == nullptr)
+		{
+			return -1;
+		}
+		else
+		{
+			return pCurr->pLeft->rec.key;
+		}
+	}
+	TKey GetRootKey()
+	{
+		return pRoot->rec.key;
+	}
 };
 
