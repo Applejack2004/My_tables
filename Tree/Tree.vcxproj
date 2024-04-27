@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AVLTree.h" />
     <ClInclude Include="TArrayHash.h" />
     <ClInclude Include="TArrayTable.h" />
     <ClInclude Include="THashTable.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="TTreeTable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AVLTree.cpp" />
     <ClCompile Include="FastTest.cpp" />
     <ClCompile Include="TArrayHash.cpp" />
     <ClCompile Include="THashTable.cpp" />

@@ -14,7 +14,7 @@ protected:
 		if (pNode == nullptr)
 		{
 			pNode = new TTreeNode(rec);
-			res = H_INC; dataCount++;
+			res = H_INC; dataCount++;//
 		
 		}
 		else if (pNode->rec.key > rec.key)
