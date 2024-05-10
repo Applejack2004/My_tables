@@ -1,16 +1,23 @@
 #pragma once
 #include "TTable.h"
 #include <stack>
-
+#define  H_OK 0
+#define  H_INC 1
+#define  H_DEC -1
+#define  BalRight 1
+#define  BalOK 0
+#define  BalLeft -1
 
 struct TTreeNode {
 	TRecord rec;
 	TTreeNode* pLeft, * pRight;
+	int bal;
 	TTreeNode(const TRecord& _rec)
 	{
 		rec = _rec;
 		pLeft = nullptr;
 		pRight = nullptr;
+		bal = BalOK;
 	}
 };
 
