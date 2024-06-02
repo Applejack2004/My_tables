@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2146,5): warning : The referenced project '..\List\List\List.vcxproj' does not exist.
+  AVLTree_test.cpp
+C:\my_git\Tree\Tree\Tests\gtest.h(55,1): warning C4005: _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING: изменение макроопределения
+  (компиляция исходного файла "AVLTree_test.cpp")
+  C:\my_git\Tree\Tree\Tests\gtest.h(55,1):
+  "_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING" ранее объявлен в командной строке
+  
+  TTreeTable_test.cpp
+  Создание кода...
+C:\my_git\Tree\Tree\Tree\AVLTree.h(270): warning C4715: AVLTree::Insert: значение возвращается не при всех путях выполнения
+  TreeTest.vcxproj -> C:\my_git\Tree\Tree\x64\Debug\TreeTest.exe

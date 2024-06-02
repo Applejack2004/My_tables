@@ -1,0 +1,6 @@
+﻿  MyForm.cpp
+C:\my_git\Tree\Tree\WinForms\MyForm.h(606,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  (компиляция исходного файла "MyForm.cpp")
+  
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  WinForms.vcxproj -> C:\my_git\Tree\Tree\x64\Debug\WinForms.exe

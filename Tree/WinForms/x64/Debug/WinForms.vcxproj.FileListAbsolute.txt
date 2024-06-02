@@ -1,0 +1,3 @@
+C:\my_git\Tree\Tree\WinForms\x64\Debug\WinForms.vcxproj.AssemblyReference.cache
+C:\my_git\Tree\Tree\WinForms\x64\Debug\WinForms.MyForm.resources
+C:\my_git\Tree\Tree\WinForms\x64\Debug\WinForms.vcxproj.GenerateResource.cache
